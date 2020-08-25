@@ -76,7 +76,7 @@ def train_12ECG_classifier(input_directory, output_directory):
     seed = 0
     np.random.seed(seed)
     
-    epoch_size = 50
+    epoch_size = 100
     batch_size = 120
     n_step = 100
     
@@ -446,6 +446,8 @@ def train_12ECG_classifier(input_directory, output_directory):
             sess.run(train_opt, feed)
                 
             step += 1
+            if epoch < 30:
+                continue
             
             ################# validation  ######################
             if step % n_step == 0:
